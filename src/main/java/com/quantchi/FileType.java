@@ -15,6 +15,7 @@ public class FileType {
         }
 
         String fileName = file.getName();
+
         if(fileName.endsWith(HSQL) || fileName.endsWith(SCALA)){
             return true;
         }

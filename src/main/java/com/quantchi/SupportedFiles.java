@@ -1,17 +1,21 @@
 package com.quantchi;
 
+import org.apache.log4j.Logger;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @ClassName SupportedFiles
- * @Description //
+ * @Description //traversal the path to list all file supported('.sql', 'skettle', '.scala' ...).
  * @Author wbchen
  * @Data 12/17/18 9:29 AM
  * @Version 1.0
  **/
 public class SupportedFiles {
+    private static final Logger logger = Logger.getLogger(SupportedFiles.class);
+
     private String path = "";
 
     private List<File> fileList = new ArrayList<File>();
@@ -30,12 +34,38 @@ public class SupportedFiles {
         this.path = path;
     }
 
-    public void getAllByPath(String path){
+    /**
+     * @Author      wbchen
+     * @Description
+     * @Date        9:50 AM 12/17/18
+     * @Param       [path]
+     * @return      void
+     **/
+    public void traversalFilesByPath(String path){
+
+        logger.info("path: " + path);
         File rootf = new File(path);
         if(rootf == null){
-            System.out.print("");
+            //System.out.print("The file path does not exist or has syntax error, please check first.");
+            logger.warn("The file path does not exist or has syntax error, please check first.");
         }
 
+        File[] filesUnderThisPath = rootf.listFiles();
+        if(filesUnderThisPath == null || filesUnderThisPath.length <= 0){
+            logger.warn("The folder is empty.");
+        }else{
+            for (File tmp : filesUnderThisPath) {
+                if(tmp.isDirectory()){
+                    traversalFilesByPath(tmp.getPath());
+                }else if(FileType.isSupportedType(tmp)){
+                    fileList.add(tmp);
+                }
+            }
+        }
+    }
 
+    public List<File> getFileList(){
+        traversalFilesByPath(this.path);
+        return this.fileList;
     }
 }
