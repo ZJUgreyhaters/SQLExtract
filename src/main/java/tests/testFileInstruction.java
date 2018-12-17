@@ -14,26 +14,12 @@ import java.util.List;
  **/
 public class testFileInstruction {
     public static void main(String[] args){
-        File f = new File("/home/wbchen/Documents/FILE/script");
-//        if(f.isFile()){
-//            System.out.println("333" + f.getAbsolutePath() + "    name " + f.getName());
-//            return;
-//        }
-//        File[] s = f.listFiles();
-//
-//        for (File tmp :
-//             s) {
-//            if(tmp.isDirectory()){
-//                System.out.println("Dir :" + tmp.getAbsolutePath());
-//            }else{
-//                System.out.println("File:" + tmp.getName());
-//            }
-//        }
-//        return;
 
         List<File> files =  (new SupportedFiles("/home/wbchen/Documents/FILE/script")).getFileList();
 
-
+        for(int i = 0;i < files.size();i++){
+            System.out.println(files.get(i).getName());
+        }
 
     }
 }

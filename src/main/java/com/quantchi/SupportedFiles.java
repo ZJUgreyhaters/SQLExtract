@@ -1,7 +1,5 @@
 package com.quantchi;
 
-import org.apache.log4j.Logger;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +12,7 @@ import java.util.List;
  * @Version 1.0
  **/
 public class SupportedFiles {
-    private static final Logger logger = Logger.getLogger(SupportedFiles.class);
+    //private static final Logger logger = Logger.getLogger(SupportedFiles.class);
 
     private String path = "";
 
@@ -43,16 +41,16 @@ public class SupportedFiles {
      **/
     public void traversalFilesByPath(String path){
 
-        logger.info("path: " + path);
         File rootf = new File(path);
         if(rootf == null){
-            //System.out.print("The file path does not exist or has syntax error, please check first.");
-            logger.warn("The file path does not exist or has syntax error, please check first.");
+            System.out.print("The file path does not exist or has syntax error, please check first.");
+            //logger.warn("The file path does not exist or has syntax error, please check first.");
         }
 
         File[] filesUnderThisPath = rootf.listFiles();
         if(filesUnderThisPath == null || filesUnderThisPath.length <= 0){
-            logger.warn("The folder is empty.");
+            System.out.println("The folder is empty.");
+            //logger.warn("The folder is empty.");
         }else{
             for (File tmp : filesUnderThisPath) {
                 if(tmp.isDirectory()){
