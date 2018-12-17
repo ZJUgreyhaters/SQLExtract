@@ -1,4 +1,4 @@
-package com.quantchi;
+package com.quantchi.utils;
 
 import java.io.File;
 
@@ -22,7 +22,18 @@ public class FileType {
 
         String fileName = file.getName();
 
-        if(fileName.endsWith(HSQL) || fileName.endsWith(SCALA)){
+        if(fileName.endsWith(HSQL) ){
+            System.out.println("Type-of-hiveSQL");
+            return true;
+        }
+
+        if(fileName.endsWith(SCALA)){
+            System.out.println("Type-of-scala");
+            return true;
+        }
+
+        if(fileName.contains("kettle")){
+            System.out.println("Type-of-kettle");
             return true;
         }
 

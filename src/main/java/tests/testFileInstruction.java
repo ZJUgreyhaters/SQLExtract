@@ -1,6 +1,6 @@
 package tests;
 
-import com.quantchi.SupportedFiles;
+import com.quantchi.utils.SupportedFiles;
 
 import java.io.File;
 import java.util.List;
@@ -20,6 +20,7 @@ public class testFileInstruction {
         for(int i = 0;i < files.size();i++){
             System.out.println(files.get(i).getName());
         }
+
 
     }
 }
