@@ -4,15 +4,21 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SupportedFileList {
-
+/**
+ * @ClassName SupportedFiles
+ * @Description //
+ * @Author wbchen
+ * @Data 12/17/18 9:29 AM
+ * @Version 1.0
+ **/
+public class SupportedFiles {
     private String path = "";
 
-    private List<File> fileList = new ArrayList<>();
+    private List<File> fileList = new ArrayList<File>();
 
-    SupportedFileList(){}
+    SupportedFiles(){}
 
-    public SupportedFileList(String path){
+    public SupportedFiles(String path){
         this.path = path;
     }
 
