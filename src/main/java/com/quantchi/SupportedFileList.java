@@ -25,6 +25,11 @@ public class SupportedFileList {
     }
 
     public void getAllByPath(String path){
+        File rootf = new File(path);
+        if(rootf == null){
+            System.out.print("");
+        }
+
 
     }
 }
