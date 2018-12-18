@@ -1,5 +1,6 @@
 package tests;
 
+import com.quantchi.utils.KettleExtract;
 import com.quantchi.utils.SupportedFiles;
 
 import java.io.File;
@@ -19,7 +20,12 @@ public class testFileInstruction {
 
         for(int i = 0;i < files.size();i++){
             System.out.println(files.get(i).getName());
+            if(files.get(i).getName().contains("kettle")){
+                KettleExtract kettleExtract = new KettleExtract(files.get(i).getAbsolutePath());
+                List<String> sqls = kettleExtract.getSqls();
+            }
         }
+
 
 
     }
