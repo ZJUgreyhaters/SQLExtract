@@ -16,6 +16,8 @@ import java.util.List;
 public class testFileInstruction {
     public static void main(String[] args){
 
+
+
         List<File> files =  (new SupportedFiles("/home/wbchen/Documents/FILE/script")).getFileList();
 
         for(int i = 0;i < files.size();i++){
