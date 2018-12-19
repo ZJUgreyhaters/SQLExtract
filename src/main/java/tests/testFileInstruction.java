@@ -6,6 +6,7 @@ import com.quantchi.utils.SupportedFiles;
 import java.io.File;
 import java.util.List;
 
+
 /**
  * @ClassName testFileInstruction
  * @Description //
@@ -15,8 +16,6 @@ import java.util.List;
  **/
 public class testFileInstruction {
     public static void main(String[] args){
-
-
 
         List<File> files =  (new SupportedFiles("/home/wbchen/Documents/FILE/script")).getFileList();
 

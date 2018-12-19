@@ -47,15 +47,29 @@ public class KettleExtract {
             int line = 1;
             while((sql = reader.readLine()) != null){
                 if(sql.contains("<sql>")){
-                    System.out.println("==== " + line + " :" + sql.replaceAll("&#x.{1,3};", " "));
-                    System.out.println("line " + line + " :" + sql);
+
+                    System.out.println("line  " + line + " :" + sql);
+                    int index = 0;
+                    while((index = sql.indexOf("&#x")) != -1){
+                        int front  = index;
+                        int end = index;
+                        if(sql.charAt(front + 4) == ';'){
+                            end = front + 4;
+                        }else if(sql.charAt(front + 5) == ';'){
+                            end = front + 5;
+                        }else if(sql.charAt(front + 7) == ';'){
+                            end = front + 7;
+                        }
+                        // "...&#x--;..."
+                        String ascii = sql.substring(front + 3, end);
+
+                        sql = sql.substring(0, front) + String.valueOf((char)(Integer.parseInt(ascii, 16))) + sql.substring(end + 1);
+                    }
+                    System.out.println("progreess : " + sql);
+                    this.sqls.add(sql);
                 }
 
-
                 line++;
-//                if(line > 10000){
-//                    break;
-//                }
             }
 
         }catch (Exception e){
@@ -84,6 +98,5 @@ public class KettleExtract {
 //            }
 //            remaining -= BUFFER_SIZE;
 //        }
-
     }
 }
