@@ -65,7 +65,7 @@ public class KettleExtract {
 
                         sql = sql.substring(0, front) + String.valueOf((char)(Integer.parseInt(ascii, 16))) + sql.substring(end + 1);
                     }
-                    System.out.println("progreess : " + sql);
+                    //System.out.println("progreess : " + sql);
                     this.sqls.add(sql);
                 }
 

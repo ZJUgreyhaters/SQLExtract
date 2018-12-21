@@ -24,10 +24,14 @@ public class testFileInstruction {
             if(files.get(i).getName().contains("kettle")){
                 KettleExtract kettleExtract = new KettleExtract(files.get(i).getAbsolutePath());
                 List<String> sqls = kettleExtract.getSqls();
+
+                for(int m = 0;m < sqls.size();m++){
+                    System.out.println("->" + sqls.get(m));
+                }
+            }else if(files.get(i).getName().contains(".sql")){
+
             }
         }
-
-
 
     }
 }
